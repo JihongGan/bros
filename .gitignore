@@ -1,1 +1,10 @@
+.DS_Store
+.AppleDouble
+.LSOverride
+
 /target
+*.img
+*.elf
+
+mkfs/mkfs
+mkfs/mkfs.d

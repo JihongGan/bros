@@ -1,13 +1,5 @@
-[package]
-name = "gos"
-version = "0.1.0"
-edition = "2021"
-authors = ["Jihong Gan <jhgan99@gmail.com>"]
-
-[profile.dev]
-panic = "abort"
-
-[profile.release]
-panic = "abort"
-
-[dependencies]
+[workspace]
+members = [
+    "kernel",
+    "user",
+]
