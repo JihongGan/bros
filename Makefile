@@ -1,7 +1,7 @@
 K=kernel
 U=user
 
-mkfs/mkfs: mkfs/mkfs.c mkfs/fs.h mkfs/param.h
+mkfs/mkfs: mkfs/mkfs.c mkfs/fs.h mkfs/params.h
 	gcc -Werror -Wall -I. -o mkfs/mkfs mkfs/mkfs.c
 
 # Prevent deletion of intermediate files, e.g. cat.o, after first build, so
@@ -13,4 +13,4 @@ mkfs/mkfs: mkfs/mkfs.c mkfs/fs.h mkfs/param.h
 UPROGS =
 
 fs.img: mkfs/mkfs README.md $(UPROGS)
-	mkfs/mkfs fs.img README.md $(UPROGS)
+	mkfs/mkfs ./target/fs.img README.md $(UPROGS)
