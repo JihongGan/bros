@@ -5,8 +5,6 @@ Currently a work in progress.
 
 # TODO
 * [ ] Translate mkfs into Rust
-* [ ] Unhack trampoline
-* [ ] Clean up build system
 * [ ] Add license
 
 ## References

@@ -10,7 +10,8 @@ runner = """qemu-system-riscv64 \
     -m 128M \
     -bios none \
     -nographic \
-    -drive file=../target/fs.img,if=none,format=raw,id=x0 \
+    -drive file=../fs.img,if=none,format=raw,id=x0 \
+    -global virtio-mmio.force-legacy=false \
     -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0 \
     -kernel """
 
