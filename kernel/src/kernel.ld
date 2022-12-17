@@ -40,9 +40,12 @@ SECTIONS
 
   .bss : {
     . = ALIGN(16);
+    sbss = .;
     *(.sbss .sbss.*) /* do not need to distinguish this from .bss */
     . = ALIGN(16);
     *(.bss .bss.*)
+    . = ALIGN(16);
+    ebss = .;
   }
 
   PROVIDE(end = .);

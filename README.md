@@ -6,6 +6,7 @@ Currently a work in progress.
 # TODO
 * [ ] Translate mkfs into Rust
 * [ ] Add license
+* [ ] Use SBI (ref. https://riscv.org/wp-content/uploads/2019/12/Summit_bootflow.pdf)
 
 ## References
 * [Writing an OS in Rust - Philipp Oppermann's blog](https://os.phil-opp.com/)
