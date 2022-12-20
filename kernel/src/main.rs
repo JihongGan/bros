@@ -1,9 +1,12 @@
 #![no_std]
 #![no_main]
+#![feature(panic_info_message)]
 
 mod lang_items;
+mod uart;
 
-static SUP: &[u8] = b"Wassup BROS";
+#[macro_use]
+mod console;
 
 // asm
 use core::arch::global_asm;
@@ -25,5 +28,6 @@ fn clear_bss() {
 #[no_mangle]
 pub extern "C" fn start() -> ! {
     clear_bss();
-    loop {}
+    println!("What's up BROS");
+    panic!("Shutting down...")
 }
