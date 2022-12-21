@@ -1,6 +1,9 @@
-use core::panic::PanicInfo;
+use core::{arch::asm, panic::PanicInfo};
 
 use crate::println;
+
+#[no_mangle]
+extern "C" fn eh_personality() {}
 
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
@@ -14,14 +17,14 @@ fn panic(info: &PanicInfo) -> ! {
     } else {
         println!("Panicked: {}", info.message().unwrap());
     }
-    loop {}
+    abort();
 }
 
 #[no_mangle]
 extern "C" fn abort() -> ! {
     loop {
         unsafe {
-            riscv::asm::wfi();
+            asm!("wfi");
         }
     }
 }

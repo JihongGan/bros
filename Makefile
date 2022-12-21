@@ -6,7 +6,7 @@ KERNELPATH = target/riscv64gc-unknown-none-elf/debug/kernel
 TOOLPREFIX = riscv64-unknown-elf-
 QEMU = qemu-system-riscv64
 ifndef NCPU
-NCPU := 4
+NCPU := 1
 endif
 
 # try to generate a unique GDB port

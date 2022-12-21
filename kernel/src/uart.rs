@@ -61,7 +61,7 @@ impl UART {
         self.write(Register::FCR, FCR_FIFO_ENABLE | FCR_FIFO_CLEAR);
 
         // enable transmit and receive interrupts
-        // self.write(Register::IER, IER_RX_ENABLE | IER_TX_ENABLE);
+        self.write(Register::IER, IER_RX_ENABLE | IER_TX_ENABLE);
     }
 
     fn read(&self, reg: Register) -> u8 {
@@ -73,10 +73,10 @@ impl UART {
     }
 
     pub fn getc(&self) -> Option<u8> {
-        if self.read(Register::LSR) & LSR_RX_READY == 0 {
-            None
-        } else {
+        if self.read(Register::LSR) & LSR_RX_READY == 1 {
             Some(self.read(Register::RHR))
+        } else {
+            None
         }
     }
 

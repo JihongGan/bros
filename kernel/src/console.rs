@@ -9,9 +9,9 @@ pub struct Stdout {
 
 impl Stdout {
     fn new() -> Stdout {
-        let mut uart = UART::new(CONSOLE_UART_BASE);
-        uart.init();
-        Stdout { uart }
+        Stdout {
+            uart: UART::new(CONSOLE_UART_BASE),
+        }
     }
 
     pub fn print(args: fmt::Arguments) {

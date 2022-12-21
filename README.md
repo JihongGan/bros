@@ -5,6 +5,7 @@ Currently a work in progress.
 
 # TODO
 * [ ] Translate mkfs into Rust
+* [ ] Rewrite makefile into build.rs
 * [ ] Add license
 * [ ] Use SBI (ref. https://riscv.org/wp-content/uploads/2019/12/Summit_bootflow.pdf)
 
