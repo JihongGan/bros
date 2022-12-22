@@ -52,4 +52,5 @@ fs.img: mkfs/mkfs README.md $(UPROGS)
 
 # generic targets qeme/virt
 opensbi: export CROSS_COMPILE=$(TOOLPREFIX)
+opensbi:
 	cd opensbi && make PLATFORM=generic

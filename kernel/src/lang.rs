@@ -1,6 +1,6 @@
 use core::panic::PanicInfo;
 
-use crate::println;
+use crate::{println, sbi::shutdown};
 
 #[no_mangle]
 extern "C" fn eh_personality() {}
@@ -17,14 +17,5 @@ fn panic(info: &PanicInfo) -> ! {
     } else {
         println!("Panicked: {}", info.message().unwrap());
     }
-    abort();
-}
-
-#[no_mangle]
-extern "C" fn abort() -> ! {
-    loop {
-        unsafe {
-            riscv::asm::wfi();
-        }
-    }
+    shutdown()
 }

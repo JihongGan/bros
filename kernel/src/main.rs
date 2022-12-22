@@ -2,12 +2,14 @@
 #![no_main]
 #![feature(panic_info_message, asm_const)]
 
-mod entry;
 mod lang;
-mod uart;
+mod sbi;
 
 #[macro_use]
 mod console;
+
+use core::arch::global_asm;
+global_asm!(include_str!("entry.S"));
 
 // params
 const NCPU: usize = 1;
@@ -25,7 +27,6 @@ fn clear_bss() {
 #[no_mangle]
 pub extern "C" fn kmain() -> ! {
     clear_bss();
-    uart::UART::new(console::CONSOLE_UART_BASE).init();
 
     println!("What's up BROS");
     panic!("Shutting down...");
