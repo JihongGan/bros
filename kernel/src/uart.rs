@@ -1,5 +1,3 @@
-// ref. http://osblog.stephenmarz.com/ch2.html
-
 const IER_RX_ENABLE: u8 = 1 << 0;
 const IER_TX_ENABLE: u8 = 1 << 1;
 const FCR_FIFO_ENABLE: u8 = 1 << 0;

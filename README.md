@@ -7,6 +7,7 @@ Currently a work in progress.
 * [ ] Translate mkfs into Rust
 * [ ] Rewrite makefile into build.rs
 * [ ] Use SBI (ref. https://riscv.org/wp-content/uploads/2019/12/Summit_bootflow.pdf)
+* [ ] Implement spinlock
 
 ## References
 * [Writing an OS in Rust - Philipp Oppermann's blog](https://os.phil-opp.com/)

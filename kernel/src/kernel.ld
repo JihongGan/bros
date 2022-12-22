@@ -5,7 +5,7 @@
 
 OUTPUT_ARCH( "riscv" )
 ENTRY( _start )
-ENTRY_ADDR = 0x80000000;
+KERNELENTRY = 0x80200000;
 
 SECTIONS
 {
@@ -13,7 +13,7 @@ SECTIONS
      * ensure that entry.S / _start is at 0x80000000,
      * where qemu's -kernel jumps.
      */
-    . = ENTRY_ADDR;
+    . = KERNELENTRY;
 
     .text : {
         *(.text.entry)

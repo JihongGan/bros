@@ -28,4 +28,5 @@ pub extern "C" fn kmain() -> ! {
     uart::UART::new(console::CONSOLE_UART_BASE).init();
 
     println!("What's up BROS");
+    panic!("Shutting down...");
 }

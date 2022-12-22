@@ -1,4 +1,4 @@
-use core::{arch::asm, panic::PanicInfo};
+use core::panic::PanicInfo;
 
 use crate::println;
 
@@ -24,7 +24,7 @@ fn panic(info: &PanicInfo) -> ! {
 extern "C" fn abort() -> ! {
     loop {
         unsafe {
-            asm!("wfi");
+            riscv::asm::wfi();
         }
     }
 }
