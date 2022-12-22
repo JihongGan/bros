@@ -7,9 +7,6 @@
 
 #define stat xv6_stat // avoid clash with host struct stat
 #include "fs.h"
-#include "params.h"
-#include "stat.h"
-#include "types.h"
 
 #ifndef static_assert
 #define static_assert(a, b) \
@@ -20,7 +17,18 @@
     } while (0)
 #endif
 
+typedef unsigned int uint;
+typedef unsigned short ushort;
+typedef unsigned char uchar;
+
 #define NINODES 200
+#define MAXOPBLOCKS 10            // max # of blocks any FS op writes
+#define LOGSIZE (MAXOPBLOCKS * 3) // max data blocks in on-disk log
+#define NBUF (MAXOPBLOCKS * 3)    // size of disk block cache
+#define FSSIZE 2000               // size of file system in blocks
+
+#define T_DIR 1  // Directory
+#define T_FILE 2 // File
 
 // Disk layout:
 // [ boot block | sb block | log | inode blocks | free bit map | data blocks ]
