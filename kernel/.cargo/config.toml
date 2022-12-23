@@ -3,15 +3,5 @@ target = "riscv64gc-unknown-none-elf"
 rustflags = ["-C", "link-arg=-Tkernel/src/kernel.ld"]
 
 [target.riscv64gc-unknown-none-elf]
-# Deprecated. Use make instaed
 # executable automatically appended after the runner
-runner = """qemu-system-riscv64 \
-    -machine virt \
-    -smp 4 \
-    -m 128M \
-    -bios none \
-    -nographic \
-    -drive file=../fs.img,if=none,format=raw,id=x0 \
-    -global virtio-mmio.force-legacy=false \
-    -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0 \
-    -kernel """
+runner = "./runner.sh"

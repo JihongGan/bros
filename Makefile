@@ -2,7 +2,9 @@
 
 K = kernel
 U = user
+ifndef KERNELPATH
 KERNELPATH = target/riscv64gc-unknown-none-elf/debug/kernel
+endif
 TOOLPREFIX = riscv64-unknown-elf-
 QEMU = qemu-system-riscv64
 SBI = opensbi/build/platform/generic/firmware/fw_jump.elf
@@ -26,15 +28,19 @@ QEMUOPTS += -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0
 
 UPROGS =
 
-run: fs.img build opensbi
+run: build
 	$(QEMU) $(QEMUOPTS)
 
-debug: build .gdbinit fs.img opensbi
+debug: build .gdbinit
 	@echo "*** Now run 'gdb' in another window." 1>&2
 	$(QEMU) $(QEMUOPTS) -S $(QEMUGDB)
 
-build:
+build: fs.img $(SBI)
 	cd $(K) && cargo build
+
+test: build
+	chmod +x $(K)/runner.sh
+	cd $(K) && cargo test
 
 clean:
 	cd $(K) && cargo clean
@@ -50,7 +56,6 @@ mkfs/mkfs: mkfs/mkfs.c mkfs/fs.h
 fs.img: mkfs/mkfs README.md $(UPROGS)
 	mkfs/mkfs ./fs.img README.md $(UPROGS)
 
-# generic targets qeme/virt
-opensbi: export CROSS_COMPILE=$(TOOLPREFIX)
-opensbi:
-	cd opensbi && make PLATFORM=generic
+# "generic" means qeme/virt
+$(SBI):
+	cd opensbi && make PLATFORM=generic CROSS_COMPILE=$(TOOLPREFIX)

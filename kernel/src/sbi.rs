@@ -10,6 +10,8 @@ const SBI_REMOTE_SFENCE_VMA_ASID: usize = 7;
 const SBI_SHUTDOWN: usize = 8;
 
 use core::arch::asm;
+
+use crate::println;
 #[inline(always)]
 fn call_sbi(which: usize, arg0: usize, arg1: usize, arg2: usize) -> usize {
     let mut ret;
@@ -30,6 +32,7 @@ pub fn putc(c: usize) {
 }
 
 pub fn shutdown() -> ! {
+    println!("Shutting down...");
     call_sbi(SBI_SHUTDOWN, 0, 0, 0);
     panic!("Shutdown failed");
 }
