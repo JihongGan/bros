@@ -3,8 +3,8 @@
  * https://github.com/mit-pdos/xv6-riscv/blob/riscv/kernel/kernel.ld
  */
 
-OUTPUT_ARCH( "riscv" )
-ENTRY( _start )
+OUTPUT_ARCH("riscv")
+ENTRY(_start)
 KERNELENTRY = 0x80200000;
 
 SECTIONS

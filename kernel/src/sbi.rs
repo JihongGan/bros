@@ -13,7 +13,7 @@ use core::arch::asm;
 
 use crate::println;
 #[inline(always)]
-fn call_sbi(which: usize, arg0: usize, arg1: usize, arg2: usize) -> usize {
+fn sbicall(which: usize, arg0: usize, arg1: usize, arg2: usize) -> usize {
     let mut ret;
     unsafe {
         asm!(
@@ -28,11 +28,11 @@ fn call_sbi(which: usize, arg0: usize, arg1: usize, arg2: usize) -> usize {
 }
 
 pub fn putc(c: usize) {
-    call_sbi(SBI_CONSOLE_PUTCHAR, c, 0, 0);
+    sbicall(SBI_CONSOLE_PUTCHAR, c, 0, 0);
 }
 
 pub fn shutdown() -> ! {
     println!("Shutting down...");
-    call_sbi(SBI_SHUTDOWN, 0, 0, 0);
+    sbicall(SBI_SHUTDOWN, 0, 0, 0);
     panic!("Shutdown failed");
 }

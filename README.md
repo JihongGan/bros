@@ -8,6 +8,7 @@ A work-in-progress.
 * [x] Use SBI ([ref.](https://riscv.org/wp-content/uploads/2019/12/Summit_bootflow.pdf))
   * [ ] Replace deprecated SBI extensions (ref. [SBI spec](https://github.com/riscv-non-isa/riscv-sbi-doc/blob/master/riscv-sbi.adoc))
 * [ ] Auto-timeout for tests ([ref.](https://github.com/rust-lang/rfcs/issues/2798#issuecomment-552949300))
+* [ ] Put assembly code in inline assembly
 
 ## References
 * [Writing an OS in Rust - Philipp Oppermann's blog](https://os.phil-opp.com/)
